@@ -12,16 +12,14 @@ public class HashCalc {
 	public HashCalc() {
 		senha = "teste";
 		senhahex = "";
-		codes = new String[4];
+		codes = new String[5];
 		
-		codes[0] = calcula("SHA-1");
-		codes[1] = calcula("SHA-256");
-		codes[2] = calcula("SHA-384");
-		codes[3] = calcula("SHA-512");
-		
-		for (String codigo : codes) {
-			System.out.println(codigo);
-		}
+		codes[0] = calcula("MD5");
+		codes[1] = calcula("SHA-1");
+		codes[2] = calcula("SHA-256");
+		codes[3] = calcula("SHA-384");
+		codes[4] = calcula("SHA-512");
+			
 	}
 	
 	public static void main(String args[]) {
@@ -37,7 +35,7 @@ public class HashCalc {
 
 	              StringBuilder hexString = new StringBuilder();
 	              for (byte b : messageDigest) {
-	                hexString.append(String.format("%02X", 0xFF & b));
+	                hexString.append(String.format("%02X", 0xFF & b).toLowerCase());
 	              }
 	              senhahex = hexString.toString();
 
@@ -50,6 +48,10 @@ public class HashCalc {
 			} 
 			return senhahex;
 		
+	}
+	
+	public String[] getHash(){
+		return codes;
 	}
 	
 	
