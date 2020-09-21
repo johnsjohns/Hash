@@ -5,37 +5,51 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class HashCalc {
+	private String senha;
+	private String senhahex;
+	private String[] codes;
 
 	public HashCalc() {
+		senha = "teste";
+		senhahex = "";
+		codes = new String[4];
 		
-	}
-	public static void main(String args[]) {
-		String senha = "teste";
-
-        MessageDigest md;
-		try {
-			  MessageDigest algorithm = MessageDigest.getInstance("SHA-1");
-              byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
-
-              StringBuilder hexString = new StringBuilder();
-              for (byte b : messageDigest) {
-                hexString.append(String.format("%02X", 0xFF & b));
-              }
-              String senhahex = hexString.toString();
-
-              System.out.println(senhahex.toLowerCase());
-              
-		      System.out.println("2e6f9b0d5885b6010f9167787445617f553a735f"); 
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		codes[0] = calcula("SHA-1");
+		codes[1] = calcula("SHA-256");
+		codes[2] = calcula("SHA-384");
+		codes[3] = calcula("SHA-512");
+		
+		for (String codigo : codes) {
+			System.out.println(codigo);
 		}
-        
+	}
+	
+	public static void main(String args[]) {
+	
+		HashCalc calc = new HashCalc();
+	}
+	
+	private String calcula(String hashCode) {
+		 MessageDigest md;
+			try {
+				  MessageDigest algorithm = MessageDigest.getInstance(hashCode);
+	              byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
 
-        
+	              StringBuilder hexString = new StringBuilder();
+	              for (byte b : messageDigest) {
+	                hexString.append(String.format("%02X", 0xFF & b));
+	              }
+	              senhahex = hexString.toString();
+
+
+ 
+			} catch (NoSuchAlgorithmException|UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Erro no bloco de calculo");
+				e.printStackTrace();
+			} 
+			return senhahex;
+		
 	}
 	
 	
