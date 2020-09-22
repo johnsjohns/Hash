@@ -9,8 +9,8 @@ public class HashCalc {
 	private String senhahex;
 	private String[] codes;
 
-	public HashCalc() {
-		senha = "teste";
+	public HashCalc(String senha) {
+		this.senha = senha;
 		senhahex = "";
 		codes = new String[5];
 		
@@ -20,11 +20,6 @@ public class HashCalc {
 		codes[3] = calcula("SHA-384");
 		codes[4] = calcula("SHA-512");
 			
-	}
-	
-	public static void main(String args[]) {
-	
-		HashCalc calc = new HashCalc();
 	}
 	
 	private String calcula(String hashCode) {

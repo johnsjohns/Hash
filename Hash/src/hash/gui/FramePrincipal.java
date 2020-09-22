@@ -1,5 +1,6 @@
 package hash.gui;
 
+import java.awt.BorderLayout;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 
@@ -27,9 +28,15 @@ public class FramePrincipal extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		FramePrincipal fram = new FramePrincipal("Hash");
 		
-
+		Painel painel = new Painel();
+		FramePrincipal frame = new FramePrincipal("Hash Generator");
+		frame.setLayout(new BorderLayout());
+		frame.getContentPane().add(painel, BorderLayout.NORTH);
+		frame.setVisible(true);
+		frame.setSize(1200, 220);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 	}
 
 }
