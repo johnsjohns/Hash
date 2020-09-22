@@ -1,14 +1,10 @@
 package hash.gui;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class FramePrincipal extends JFrame {
 
@@ -33,21 +29,14 @@ public class FramePrincipal extends JFrame {
 
 	public static void main(String[] args) {
 		
-		
-		JPanel entrada = new JPanel(new FlowLayout());
-		JLabel entradaLbl = new JLabel("Texto: ");
-		JTextField entradaTxt = new JTextField("",30);
-		entrada.add(entradaLbl);
-		entrada.add(entradaTxt);
-		
-		FramePrincipal frame = new FramePrincipal("Hash");
+		Painel painel = new Painel();
+		FramePrincipal frame = new FramePrincipal("Hash Generator");
 		frame.setLayout(new BorderLayout());
+		frame.getContentPane().add(painel, BorderLayout.NORTH);
 		frame.setVisible(true);
-		frame.setSize(400, 400);
+		frame.setSize(1200, 220);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(entrada, BorderLayout.NORTH);
-		
-
+	
 	}
 
 }
